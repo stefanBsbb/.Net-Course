@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EGN" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HotelID" Type="Int32" Nullable="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Hotel" Relationship="Self.FK_Employee_Hotel" FromRole="Employees" ToRole="Hotel" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelID" />
+    </Key>
+    <Property Name="HotelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WebAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImageName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Hotel" FromRole="Hotel" ToRole="Employees" />
+    <NavigationProperty Name="Visitors" Relationship="Self.FK_Visitors_Hotel" FromRole="Hotel" ToRole="Visitors" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsAdministrator" Type="Boolean" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Visitor">
+    <Key>
+      <PropertyRef Name="VisitorID" />
+    </Key>
+    <Property Name="VisitorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HotelID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WebAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Hotel" Relationship="Self.FK_Visitors_Hotel" FromRole="Visitors" ToRole="Hotel" />
+  </EntityType>
+  <Association Name="FK_Employee_Hotel">
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitors_Hotel">
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+    <End Role="Visitors" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="Visitors">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelsEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Visitors" EntityType="Self.Visitor" />
+    <AssociationSet Name="FK_Employee_Hotel" Association="Self.FK_Employee_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitors_Hotel" Association="Self.FK_Visitors_Hotel">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="Visitors" EntitySet="Visitors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

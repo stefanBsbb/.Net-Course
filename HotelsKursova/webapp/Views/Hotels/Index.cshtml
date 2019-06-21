@@ -1,0 +1,58 @@
+﻿@using webapp.Models
+@model List<HotelsViewModel>
+@using webapp.Helpers;
+@{
+    ViewBag.Title = "Hotels";
+}
+
+<h2>Hotels</h2>
+
+
+
+@if (@LoginUserSession.Current.IsAdministrator == true)
+{
+<div class="table-actions">
+
+    @Html.ActionLink("Add New Hotel", "Edit", "Hotels", null, new { @class = "btn btn-primary btn-sm" })
+</div>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>HotelID</th>
+            <th>HotelName</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Phone Number </th>
+            <th>EmailAdress</th>
+            <th>WebAddress</th>
+            <th>Has Image</th>
+
+        </tr>
+    </thead>
+    @foreach (HotelsViewModel hotels in Model)
+    {
+<tr>
+    <td>@hotels.HotelID</td>
+    <td>@hotels.HotelName</td>
+    <td>@hotels.Address</td>
+    <td>@hotels.City</td>
+    <td>@hotels.PostalCode</td>
+    <td>@hotels.PhoneNumber</td>
+    <td>@hotels.EmailAddress</td>
+    <td>@hotels.WebAddress</td>
+    <td>@(hotels.HasImage ? "Yes" : "No")</td>
+    @if (@LoginUserSession.Current.IsAdministrator == true)
+    {
+        
+        <td class="cell-small">
+            @Html.ActionLink("Edit", "Edit", "Hotels", new { id = hotels.HotelID }, new { @class = "btn btn-primary btn-sm" })
+        </td>
+        <td class="cell-small">
+            @Html.ActionLink("Delete", "Delete", "Hotels", new { id = hotels.HotelID }, new { onclick = "return confirm('Are you sure you to delete this restaurant?');", @class = "btn btn-danger btn-sm" })
+        </td>
+    }
+</tr>
+    }
+</table>

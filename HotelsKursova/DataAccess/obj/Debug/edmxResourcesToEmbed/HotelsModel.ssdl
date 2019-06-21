@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EGN" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="HotelID" Type="int" Nullable="false" />
+    <Property Name="HireDate" Type="datetime" Nullable="false" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="15" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelID" />
+    </Key>
+    <Property Name="HotelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="PostalCode" Type="char" MaxLength="5" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="15" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="WebAddress" Type="varchar" MaxLength="50" />
+    <Property Name="ImageName" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="IsAdministrator" Type="bit" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PasswordHash" Type="varchar" MaxLength="500" />
+    <Property Name="PasswordSalt" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="55" />
+  </EntityType>
+  <EntityType Name="Visitors">
+    <Key>
+      <PropertyRef Name="VisitorID" />
+    </Key>
+    <Property Name="VisitorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="25" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="25" />
+    <Property Name="PostalCode" Type="char" MaxLength="5" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="15" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="WebAddress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Employee_Hotel">
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitors_Hotel">
+    <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+    <End Role="Visitors" Type="Self.Visitors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="Visitors">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelsModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visitors" EntityType="Self.Visitors" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employee_Hotel" Association="Self.FK_Employee_Hotel">
+      <End Role="Hotel" EntitySet="Hotel" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitors_Hotel" Association="Self.FK_Visitors_Hotel">
+      <End Role="Hotel" EntitySet="Hotel" />
+      <End Role="Visitors" EntitySet="Visitors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

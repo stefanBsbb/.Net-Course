@@ -1,0 +1,87 @@
+﻿@using webapp.Models
+@model VisitorsViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@if (Model.ID == 0)
+{
+    <h2>Create Visitor</h2>
+}
+else
+{
+    <h2>Edit Visitor</h2>
+}
+
+@using (Html.BeginForm("Edit", "Visitor"))
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="FirstName">FirstName</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LastName">LastName</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Address">Title</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Address)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">City</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.City)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">PostalCode</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PostalCode  )
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">Phonenumber</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PhoneNumber)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">Email</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">WebAddress</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.WebAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Username">HotelID</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.HotelID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+
+}

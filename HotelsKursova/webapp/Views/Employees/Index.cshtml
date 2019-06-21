@@ -1,0 +1,58 @@
+﻿@using webapp.Models
+@using webapp.Helpers
+@model List<EmployeeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employees</h2>
+
+
+
+<br />
+@if (@LoginUserSession.Current.IsAdministrator == true)
+{
+    <div class="table-actions">
+
+        @Html.ActionLink("Add New Employee", "Edit", "Employees", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>EmployeeID</th>
+                <th>FirstName</th>
+                <th>HotelID</th>
+            </tr>
+        </thead>
+
+
+
+
+        @foreach (EmployeeViewModel employee in Model)
+        {
+    <tr>
+        <td class="cell-small">@employee.ID</td>
+        <td>@employee.FirstName</td>
+        <td>@employee.HotelID</td>
+        @if (@LoginUserSession.Current.IsAdministrator == true)
+        {
+            <td class="cell-small">
+
+                @Html.ActionLink("Details", "Details", "Employees", new { id = employee.ID }, new { @class = "btn btn-primary btn-sm" })
+            </td>
+            <td class="cell-small">
+
+                @Html.ActionLink("Edit", "Edit", "Employees", new { id = employee.ID }, new { @class = "btn btn-primary btn-sm" })
+            </td>
+            <td class="cell-small">
+
+                @Html.ActionLink("Delete", "Delete", "Employees", new { id = employee.ID }, new { onclick = "return confirm('Are you sure you to delete this employee?');", @class = "btn btn-danger btn-sm" })
+            </td>
+        }
+        </tr>
+        }
+    </table>
+

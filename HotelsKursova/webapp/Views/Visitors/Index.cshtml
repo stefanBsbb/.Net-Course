@@ -1,0 +1,39 @@
+﻿@using webapp.Models
+@using webapp.Helpers
+@model List<VisitorsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Visitors</h2>
+
+@* show ErrorMessage or InfoMessage (usually when we delete/edit/etc.) *@
+
+@if (@LoginUserSession.Current.IsAdministrator == true)
+{
+    <div class="table-actions">
+
+        @Html.ActionLink("Add New Visitor", "Edit", "Visitors", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+}
+    <table class="table table-striped">
+        @foreach (VisitorsViewModel visitor in Model)
+        {
+        <tr>
+            <td class="cell-small">@visitor.ID</td>
+            <td>@visitor.FirstName</td>
+            @if (@LoginUserSession.Current.IsAdministrator == true)
+            {
+                <td class="cell-small">
+                    @*<button type="button" class="btn btn-primary btn-sm">Edit</button>*@
+                    @Html.ActionLink("Edit", "Edit", "Visitors", new { id = visitor.ID }, new { @class = "btn btn-primary btn-sm" })
+                </td>
+                <td class="cell-small">
+                    @*<button type="button" class="btn btn-danger btn-sm">Delete</button>*@
+                    @Html.ActionLink("Delete", "Delete", "Visitors", new { id = visitor.ID }, new { onclick = "return confirm('Are you sure you to delete this employee?');", @class = "btn btn-danger btn-sm" })
+                </td>
+            }
+            </tr>
+        }
+    </table>

@@ -1,0 +1,57 @@
+﻿@using webapp.Models;
+@using webapp.Helpers;
+@model HomeViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="table-actions">
+        @Html.ActionLink("Hotels", "Index", "Hotels", null, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Visitors", "Index", "Visitors", null, new { @class = "btn btn-primary btn-sm" })
+        @if (LoginUserSession.Current.IsAdministrator)
+        {
+            @Html.ActionLink("User", "Index", "User", null, new { @class = "btn btn-primary btn-sm" })
+        }
+            @Html.ActionLink("Register", "Register", "Home", null, new { @class = "btn btn-primary btn-sm" })
+
+            @if (LoginUserSession.Current.IsAuthenticated)
+            {
+                <div>Hello @LoginUserSession.Current.Username</div>
+                <div>You are administrator: @LoginUserSession.Current.IsAdministrator </div>
+                @Html.ActionLink("Logout", "Logout", "Home", null, new { @class = "btn btn-primary btn-sm" })
+            }
+            else
+            {
+                @Html.ActionLink("Login", "Login", "Home", null, new { @class = "btn btn-primary btn-sm" })
+            }
+
+
+        </div>
+
+
+
+
+
+
+</nav>
+
+
+
+<div class="cycle-slideshow" data-cycle-slides="a" data-cycle-timeout="2000">
+    @foreach (HomeHotelsViewModel hotel in Model.HotelsList)
+    {
+        <a>
+            <p>
+                @hotel.ID
+            </p>
+            <img src="@Url.Content(hotel.ImagePath)" alt="Image" width="400" />
+        </a>
+    }
+    @*@Html.ActionLink("Hotels", "Index", "Hotels", new { id = Model.hotel}, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Edit", "Edit", "Employees", new { id = employee.ID }, new { @class = "btn btn-primary btn-sm" })*@
+
+</div>

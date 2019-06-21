@@ -1,0 +1,41 @@
+﻿@using webapp.Models
+@model List<SearchViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>HotelID</th>
+            <th>HotelName</th>
+            <th>City</th>
+            <th>WebAddress</th>
+            <th>Image</th>
+
+        </tr>
+    </thead>
+
+    @foreach (SearchViewModel hotel in Model)
+    {
+<tr>
+
+    <td>@hotel.HotelID</td>
+    <td>@hotel.HotelName</td>
+    <td>@hotel.City</td>
+    <td>@hotel.WebAddress</td>
+    <td>
+        @if (hotel.HasImage)
+        {
+            <a href="~/Restaurant/Details/@hotel.HotelID">
+                <img src="@Url.Content(hotel.HotelImageUrl)" width="200" alt="Image for @hotel.HotelName" />
+            </a>
+        }
+    </td>
+
+</tr>
+    }
+</table>

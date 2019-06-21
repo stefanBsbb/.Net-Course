@@ -1,0 +1,9 @@
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\bin\Debug\Hotels.DB.dacpac
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\bin\Debug\Hotels.DB.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\bin\Debug\Hotels.DB.pdb
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\Model.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\refactor.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\postdeploy.sql
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\predeploy.sql
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\Hotels.DB.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Hotels.DB\obj\Debug\Hotels.DB.pdb

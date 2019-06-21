@@ -1,0 +1,12 @@
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\SayByeBye\source\repos\HotelsKursova\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache

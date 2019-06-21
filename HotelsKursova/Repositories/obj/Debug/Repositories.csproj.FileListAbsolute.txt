@@ -1,0 +1,15 @@
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\obj\Debug\Repositories.csprojAssemblyReference.cache
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\obj\Debug\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\Repositories.dll.config
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\Repositories.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\Repositories.pdb
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\DataAccess.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\EntityFramework.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\DataAccess.pdb
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\DataAccess.dll.config
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\EntityFramework.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\obj\Debug\Repositories.csproj.CopyComplete
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\obj\Debug\Repositories.dll
+C:\Users\SayByeBye\source\repos\HotelsKursova\Repositories\obj\Debug\Repositories.pdb
